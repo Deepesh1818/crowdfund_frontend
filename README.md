@@ -81,7 +81,7 @@ _Explore the frontend directly on the live demo to see full functionality!_
 ## 👤 Author
 
 Deepesh Kumawat
-[GitHub Profile](https://github.com/kunall-01)
+[GitHub Profile](https://github.com/Deepesh1818)
 
 ---
 
