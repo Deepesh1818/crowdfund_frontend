@@ -44,7 +44,7 @@ CrowdSpark frontend is designed to offer a seamless and engaging user experience
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/kunall-01/crowdspark-frontend.git
+git clone https://github.com/Deepesh1818/crowdfund_frontend
 cd crowdspark-frontend
 ```
 
@@ -80,11 +80,11 @@ _Explore the frontend directly on the live demo to see full functionality!_
 
 ## 👤 Author
 
-Kunal Kumawat
+Deepesh Kumawat
 [GitHub Profile](https://github.com/kunall-01)
 
 ---
 
 ## 📄 License
 
-MIT © Kunal Kumawat
+MIT © Deepesh Kumawat
