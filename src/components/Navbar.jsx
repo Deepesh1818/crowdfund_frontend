@@ -45,6 +45,7 @@ const Navbar = () => {
 
   const handleLogout = async () => {
     try {
+      localStorage.removeItem("token");
       await axios.post(
         `${import.meta.env.VITE_BACKEND}/logout`,
         {},
@@ -55,6 +56,10 @@ const Navbar = () => {
       navigate("/");
     } catch (err) {
       console.error("Logout failed", err);
+      localStorage.removeItem("token");
+      dispatch(clearUser());
+      setNotifications([]);
+      navigate("/");
     }
   };
 

@@ -32,6 +32,7 @@ export default function App() {
         dispatch(setUser(res.data));
       } catch (err) {
         console.log("Not logged in or token invalid");
+        localStorage.removeItem("token");
       } finally {
         setIsAuthChecked(true);
       }

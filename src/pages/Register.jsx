@@ -40,7 +40,7 @@ export default function Register() {
     }
 
     try {
-      await axios.post(
+      const response = await axios.post(
         `${import.meta.env.VITE_BACKEND}/register`,
         {
           username: form.username,
@@ -51,17 +51,28 @@ export default function Register() {
         { withCredentials: true }
       );
 
-      const res = await axios.get(`${import.meta.env.VITE_BACKEND}/me`, {
-        withCredentials: true,
-      });
+      if (response.data?.token) {
+        localStorage.setItem("token", response.data.token);
+      }
+
+      let userData = response.data?.user;
+      if (!userData) {
+        const res = await axios.get(`${import.meta.env.VITE_BACKEND}/me`, {
+          withCredentials: true,
+          headers: response.data?.token
+            ? { Authorization: `Bearer ${response.data.token}` }
+            : {},
+        });
+        userData = res.data;
+      }
 
       if (!didCancel) {
-        dispatch(setUser(res.data));
+        dispatch(setUser(userData));
         setSuccess("Registration successful! Redirecting...");
 
-        if (res.data?.role === "admin") {
+        if (userData?.role === "admin") {
           navigate("/admin");
-        } else if (res.data?.role === "campaignOwner") {
+        } else if (userData?.role === "campaignOwner") {
           navigate("/create");
         } else {
           navigate("/dashboard");
